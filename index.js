@@ -124,10 +124,21 @@ function findByName(pokemon, name) {
  *  filterByType(pokemon, "psychic")
  *  //> []
  */
-function filterByType(pokemon, pokeType) {
-  if (pokemon !== pokeType.length) {
-    return [];
-  }
+//
+function filterByType(pokemon, type) {
+  //   if (pokemon !== pokeType.length) {
+  //     return [];
+  //   }
+  //   return pokemon.filter((poke) => {
+  //     return poke.types.find(
+  //       (pokeType) => pokeType.type.name === type.toLowerCase()
+  //     );
+  //   });
+  return pokemon.filter((poke) => {
+    return poke.types.find(
+      (pokeType) => pokeType.type.name === type.toLowerCase()
+    );
+  });
 }
 
 /**
@@ -145,7 +156,9 @@ function filterByType(pokemon, pokeType) {
  *  //>  false
  */
 
-function checkMinBaseExperience() {}
+function checkMinBaseExperience(pokemon, baseExperience) {
+  return pokemon.every((poke) => poke.base_experience >= baseExperience);
+}
 
 /**
  * findType()
