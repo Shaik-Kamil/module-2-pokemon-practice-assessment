@@ -36,7 +36,16 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {}
+function getAllPokemonNames(pokemon) {
+  if (pokemon.length === 1) {
+    throw "Error";
+  }
+  return pokemon.map(({ name }) => {
+    if (name) {
+      return name;
+    }
+  });
+}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -56,7 +65,9 @@ function getAllPokemonNames() {}
  *  checkIfAnyPokemonWeighsLessThan(pokemon, 18);
  *  //> false
  */
-function checkIfAnyPokemonWeighsLessThan() {}
+function checkIfAnyPokemonWeighsLessThan(pokemon, weights = 100) {
+  return pokemon.some(({ weight }) => weight < weights);
+}
 
 /**
  * findByName()
@@ -74,7 +85,13 @@ function checkIfAnyPokemonWeighsLessThan() {}
       // clefable
     };
  */
-function findByName() {}
+function findByName(pokemon, name) {
+  const find = pokemon.find(({ pokeId }) => name === pokeId);
+  if (!find) {
+    return null;
+  }
+  return find;
+}
 
 /**
  * filterByType()
@@ -100,7 +117,11 @@ function findByName() {}
  *  filterByType(pokemon, "psychic")
  *  //> []
  */
-function filterByType() {}
+function filterByType(pokemon, pokeType) {
+  if (pokemon !== pokeType.length) {
+    return [];
+  }
+}
 
 /**
  * checkMinBaseExperience()
@@ -118,8 +139,6 @@ function filterByType() {}
  */
 
 function checkMinBaseExperience() {}
-
-
 
 /**
  * findType()
@@ -160,10 +179,7 @@ function checkMinBaseExperience() {}
     ]
  */
 
-
-const findType = () => {
-  
-}
+const findType = () => {};
 
 module.exports = {
   getAllPokemonNames,
@@ -171,5 +187,5 @@ module.exports = {
   findByName,
   filterByType,
   checkMinBaseExperience,
-  findType
+  findType,
 };
